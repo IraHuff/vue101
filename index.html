@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue 101</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <div id="app" v-cloak> <!-- hides element while loading -->
+       <p> {{ fullName }}</p>
+       <p><a v-bind:href="url" target="_blank">google</a></p><!-- v-bind allows vue to processes attrubutes as dynamic values colon only is shorthand-->
+       <p v-html="raw_url"></p><!-- allows outputting of raw html, without v-html tag  outputs text only -->
+       <p>{{ typeof age }}</p>
+       <hr>
+       <label>First Name</label>
+       <input type="text" name="" id="" v-model.lazy.trim="firstName">  <!-- 2 way data binding -->
+       <label> Middle Name</label>
+       <input type="text" @keyup.enter="updateMiddleName">
+
+       <label for="">Last Name</label>
+       <input type="text" name="" id="" :value="lastName" @input.prevent="updateLastName('last name event triggerd', $event)"> <!-- sets value -->
+       <label for="">Age</label>
+       <input type="number" v-model.number="age">
+       <button type="button"v-on:click="increment">+</button><!-- listens for events shorthand is @ such as @click -->
+       <button type="button"v-on:click="age--">-</button>
+    </div>
+   <!--<div id="app2">
+        {{firstName}}
+        {{lastName}}
+    </div> -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
